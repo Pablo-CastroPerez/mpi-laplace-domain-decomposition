@@ -1,0 +1,24 @@
+#!/bin/bash
+# Slurm job options (name, compute nodes, job time)
+#SBATCH --job-name=laplace
+#SBATCH --account=<ACCOUNT>
+#SBATCH --time=0:20:00
+#SBATCH --exclusive
+#SBATCH --nodes=<NUM_NODES> 
+#SBATCH --tasks-per-node=128  # Archer 2 has 128 physical cores per node    
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=standard 
+#SBATCH --qos=short # standard for more that 20 minutes on more than 2 nodes
+
+# Load the Archer2 MPI environment
+module load cray-mpich
+
+# Change to the submission directory
+cd $SLURM_SUBMIT_DIR
+
+# Set the number of threads to 1 to prevent any threaded system libraries from automatically using threading.
+export OMP_NUM_THREADS=1
+
+# Launch the parallel job
+# Using 128 MPI processes (1 node × 128 tasks)
+srun ./laplace 128 1024 3e-3 0
