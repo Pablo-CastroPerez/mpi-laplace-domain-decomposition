@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 #include <mpi.h>
 
 #include "config.h"   // constants, LEFT_VALUE, RIGHT_VALUE, etc.
@@ -42,7 +41,7 @@ int main(int argc, char * argv[]) {
   	}
 
 
-// Chose which solver to use, SOLVER_TO_USE is defined in config.h
+// Choose which solver to use, SOLVER_TO_USE is defined in config.h
   
 #if SOLVER_TO_USE == 0
 	run_solver(local_nx, ny, myrank, size, convergence_accuracy, init_jacobi_solvers, jacobi_solver, finalise_jacobi_solvers);
