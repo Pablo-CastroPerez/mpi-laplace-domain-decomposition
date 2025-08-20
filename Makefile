@@ -1,6 +1,6 @@
 MF      = Makefile
 
-CC      = mpicc
+CC      = cc
 CFLAGS  = -O3 -Wall
 LFLAGS  = $(CFLAGS) -lm
 
