@@ -10,8 +10,8 @@
 #SBATCH --partition=standard 
 #SBATCH --qos=short # standard for more that 20 minutes on more than 2 nodes
 
-# Load the Archer2 MPI environment
-module load cray-mpich
+# Loads the Archer2 MPI environment including compilers and mpi library
+module load PrgEnv-gnu
 
 # Change to the submission directory
 cd $SLURM_SUBMIT_DIR
